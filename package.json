@@ -1,0 +1,16 @@
+{
+  "name": "gillirondsbookstore2",
+  "version": "1.0.0",
+  "description": "my test project on Angular8 for ProgForce",
+  "main": "public/src/bundle/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "progforce",
+    "store"
+  ],
+  "author": "Igor Bogunkov @Gillirond",
+  "license": "ISC"
+}
