@@ -17,17 +17,21 @@ import {RequestService} from "./services/request.service";
 import {LocalStorageService} from "./services/local-storage.service";
 import {CartService} from "./services/cart.service";
 
+import {AdminGuard} from "./guards/admin.guard";
+import {AdminModule} from "./components/admin/admin.module";
+
 const appRoutes: Routes = [
     {path: '', component: ListComponent},
-    {path: 'admin', component: AdminComponent},
+    {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
     {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
-    declarations: [AppComponent, ListComponent, AdminComponent, HeaderComponent],
+    imports: [BrowserModule, FormsModule, HttpClientModule, AdminModule, RouterModule.forRoot(appRoutes)],
+    declarations: [AppComponent, ListComponent, HeaderComponent],
     bootstrap: [AppComponent],
-    providers: [RequestService, LocalStorageService, CartService]
+    providers: [RequestService, LocalStorageService, CartService,
+                AdminGuard]
 })
 export class AppModule {
 }

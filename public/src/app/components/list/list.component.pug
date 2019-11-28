@@ -1,17 +1,19 @@
-table.table.table-striped
-  thead
-    tr
-      th Name
-      th Desc
-      th Image
-      th Available
-      th Price
-  tbody
-    tr(*ngFor="let book of books")
-      td {{book.name}}
-      td {{book.desc}}
-      td
-        img.img-responsive.img-rounded([src]="{{book.image}}" [alt]="{{book.image}}")
-      td
-        input(type="checkbox" [checked]="book.available" disabled)
-      td {{book.price}}
+.panel.col-md-10.col-md-offset-1
+  .table-responsive
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th Name
+          th Desc
+          th Image
+          th Price
+          th Actions
+      tbody
+        tr(*ngFor="let book of books")
+          td {{book.name}}
+          td {{book.desc}}
+          td
+            img.img-responsive.img-rounded([src]="book.image" [alt]="book.image")
+          td {{book.price}}
+          td
+            button.btn.btn-small((click)="addToCart(book)") Add to cart

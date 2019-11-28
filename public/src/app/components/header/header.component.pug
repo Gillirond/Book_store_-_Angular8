@@ -1,3 +1,5 @@
-header
-  a.btn.btn-default(routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}") Books
-  a.btn.btn-default(routerLink="/admin" routerLinkActive="active") Admin
+header.page-header.header__links
+  .header__links
+    a.btn.btn-default.pull-left.header__links__item(routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}") Books
+    a.btn.btn-default.pull-right.header__links__item(routerLink="/admin" routerLinkActive="active") Admin
+    .clearfix

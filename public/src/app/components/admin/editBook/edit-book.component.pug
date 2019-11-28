@@ -1,0 +1,33 @@
+div
+  #edit-book-wrapper.wrapper-edit-book
+    .wrapper-edit-book__layer-bg((click)="closeWindow()")
+    .wrapper-edit-book__close-btn((click)="closeWindow()")
+    #edit-book-window.wrapper-edit-book__window.panel.panel-default
+      .panel-heading Edit this book:
+      form.panel-body(name="editBookForm")
+        .form-group
+          label(for="bookId") ID
+          input.form-control#bookId(type="text", name="id", placeholder="ID", [(ngModel)]="form.id", disabled="", required="", #id="ngModel")
+          .alert.alert-danger([hidden]="id.valid") ID not correct
+        .form-group
+          label(for="bookName") Name
+          input.form-control#bookName(type="text", name="name", placeholder="Name", [(ngModel)]="form.name", required="", pattern="[\\d\\s\\w#]{5,}", #name="ngModel")
+          .alert.alert-danger([hidden]="name.valid") Name not correct
+        .form-group
+          label(for="bookDesc") Description
+          textarea.form-control#bookDesc(name="desc", maxlength="500", placeholder="Description", [(ngModel)]="form.desc", rows="4", style="resize:none;", required="", #desc="ngModel")
+          .alert.alert-danger([hidden]="desc.valid") Desc not correct
+        .form-group
+          label(for="bookImg") Image
+          input.form-control#bookImg(type="file", name="img", placeholder="load image", [(ngModel)]="form.img", required="", #img="ngModel")
+          .alert.alert-danger([hidden]="img.valid") Image path not correct
+        .form-group
+          label(for="bookAvailable") Availability
+          input.form-control#bookAvailable(type="checkbox", name="available", placeholder="Availability", [(ngModel)]="form.available", required="", #available="ngModel")
+        .form-group
+          label(for="bookPrice") Price
+          input.form-control#bookPrice(type="number", min="0", step="1", max="10000", name="price", placeholder="Price", [(ngModel)]="form.price", required="", #price="ngModel")
+          .alert.alert-danger([hidden]="price.valid") Price not specified
+        .wrapper-edit-book__window__actions
+          button.btn.btn-default([disabled]="id.invalid || name.invalid || desc.invalid || img.invalid || price.invalid", (click)="saveBook()") Save
+          button.btn.btn-default((click)="closeWindow()") Reset

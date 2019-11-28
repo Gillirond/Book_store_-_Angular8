@@ -1,1 +1,31 @@
-div Админка
+.panel
+  div
+    app-add-book
+    app-edit-book
+  div
+    h1.text-uppercase admin panel
+    button.btn-small((click)="addBook()") Add new book
+  table.table.table-striped
+      thead
+        tr
+          th ID
+          th Name
+          th Desc
+          th Image
+          th Available
+          th Price
+          th Actions
+      tbody
+        tr(*ngFor="let book of books")
+          td {{book.id}}
+          td {{book.name}}
+          td {{book.desc}}
+          td
+            img.img-responsive.img-rounded([src]="book.image", [alt]="book.image")
+          td
+            input(type="checkbox", name="available", [(ngModel)]="book.available", disabled="")
+          td {{book.price}}
+          td
+            .btn-group
+              button.btn.btn-small(type="button", (click)="editBook(book)") Edit
+              button.btn.btn-small.btn-danger(type="button", (click)="deleteBook(book)") Delete

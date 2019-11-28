@@ -1,0 +1,29 @@
+div
+  #add-book-wrapper.wrapper-edit-book
+    .wrapper-edit-book__layer-bg((click)="closeWindow()")
+    .wrapper-edit-book__close-btn((click)="closeWindow()")
+    #add-book-window.wrapper-edit-book__window.panel.panel-default
+      .panel-heading Add new book:
+      form.panel-body(name="addBookForm")
+        .form-group
+          label(for="bookName") Name
+          input.form-control#bookName(type="text", name="name", placeholder="Name", [(ngModel)]="form.name", required="", pattern="[\\d\\s\\w#]{5,}", #name="ngModel")
+          .alert.alert-danger([hidden]="name.valid || name.untouched") Name not specified
+        .form-group
+          label(for="bookDesc") Description
+          textarea.form-control#bookDesc(name="desc", maxlength="500", placeholder="Description", [(ngModel)]="form.desc", rows="4", style="resize:none;", required="", #desc="ngModel")
+          .alert.alert-danger([hidden]="desc.valid || desc.untouched") Description not specified
+        .form-group
+          label(for="bookImg") Image
+          input.form-control#bookImg(type="text", name="img", placeholder="load image", [(ngModel)]="form.img", required="", #img="ngModel")
+          .alert.alert-danger([hidden]="img.valid || img.untouched") Image path not specified
+        .form-group
+          label(for="bookAvailable") Availability
+          input.form-control#bookAvailable(type="checkbox", name="available", placeholder="Availability", [(ngModel)]="form.available", required="", #available="ngModel")
+        .form-group
+          label(for="bookPrice") Price
+          input.form-control#bookPrice(type="number", min="0", step="1", max="10000", name="price", placeholder="Price", [(ngModel)]="form.price", required="", #price="ngModel")
+          .alert.alert-danger([hidden]="price.valid || price.untouched") Price not specified
+        .wrapper-edit-book__window__actions
+          button.btn.btn-default([disabled]="name.invalid || desc.invalid || img.invalid || price.invalid", (click)="addBook()") Add
+          button.btn.btn-default((click)="closeWindow()") Reset

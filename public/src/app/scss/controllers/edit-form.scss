@@ -1,0 +1,59 @@
+.wrapper-edit-book {
+  display: none;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  height: 100%;
+  left: 0;
+
+  &__close-btn {
+    &:hover {
+      opacity: 1;
+    }
+    position: fixed;
+    left: 2px;
+    top: 2px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.6;
+    cursor: pointer;
+    background-image: url('../../../assets/global/img/close.png');
+    background-size: cover;
+    z-index: 103;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
+
+  &__layer-bg {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    z-index: 101;
+    bottom: 0;
+
+    -webkit-animation: fadeOut .2s ease both;
+    animation: fadeOut .2s ease both;
+    visibility: visible;
+  }
+
+  &__window {
+    height: 600px;
+    top: calc(50% - 300px);
+    bottom: calc(50% - 300px);
+    z-index: 102;
+    overflow: hidden;
+    overflow-y: auto;
+    position: fixed;
+    right: calc(50% - 200px);
+    left: calc(50% - 200px);
+    width: 400px;
+    background: #f5f5f5;
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .05);
+    box-sizing: border-box;
+    padding: 20px;
+  }
+}
